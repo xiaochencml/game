@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>百鬼拾遗祭 · 活动原型</title>
+<style>
+:root{--ink:#282734;--paper:#fffaf0;--orange:#c95f35;--gold:#e6b54c;--blue:#315a76;--muted:#7e776f;--line:#eee2d0}*{box-sizing:border-box}body{margin:0;background:#141d2a;color:var(--ink);font:15px "Microsoft YaHei",system-ui,sans-serif}.app{max-width:750px;min-height:100vh;margin:auto;background:linear-gradient(155deg,#1c3347 0,#514258 315px,#f7f0e3 315px);padding:18px 18px 36px}.top,.row{display:flex;justify-content:space-between;align-items:center;gap:10px}.top{color:#fff2d1;font-size:13px}.tag{color:#ffd782}.hero{padding:24px 5px 18px;color:#fffaf0}.hero h1{font-family:serif;font-size:35px;letter-spacing:3px;margin:7px 0}.hero p{color:#d9e0e0;line-height:1.65;margin:0}.profile{margin-top:14px;display:flex;justify-content:space-between;align-items:center;background:#ffffff16;border:1px solid #ffffff36;border-radius:13px;padding:11px 13px}.profile small{display:block;color:#d9e0e0;margin-top:3px}.ticket{font-size:21px;color:#ffe4a0}.card{background:var(--paper);border-radius:16px;padding:17px;margin:14px 0;box-shadow:0 8px 22px #0d121d24}.card h2{font-size:18px;margin:0 0 6px}.muted{color:var(--muted);line-height:1.6}.label{font-size:12px;color:#8c837a}.btn{border:0;border-radius:10px;background:var(--orange);color:#fff;padding:11px 14px;font-weight:700;cursor:pointer;font-family:inherit}.btn.alt{background:var(--blue)}.btn.soft{background:#eee1cc;color:#705033}.btn:disabled{opacity:.46;cursor:not-allowed}.places{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}.place{border:1px solid var(--line);border-radius:12px;padding:11px 7px;background:#fffdf8;text-align:center;cursor:pointer}.place b{display:block;margin:4px 0}.place span{font-size:12px;color:var(--muted)}.place.active{border:2px solid var(--orange);background:#fff1df}.result{background:#fff1df;border-left:4px solid var(--orange);padding:10px;border-radius:5px;margin-top:12px;line-height:1.65;color:#774125}.progress{height:11px;border-radius:9px;background:#eadfce;overflow:hidden;margin:12px 0 6px}.progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,#cf7043,#e7b54d);transition:width .35s}.milestones{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;margin-top:14px}.milestone{position:relative;text-align:center;padding:8px 3px;border-radius:10px;background:#f2e8d9;min-height:103px;font-size:12px}.milestone b{display:block;color:#a84b2d;font-size:14px}.milestone.done{background:#e9c76b}.milestone.claimed{background:#d9d1c3;color:#777}.milestone button{margin-top:6px;border:0;border-radius:6px;padding:4px 6px;background:#c45a34;color:#fff;font:11px inherit;cursor:pointer}.sources{display:grid;grid-template-columns:1fr 1fr;gap:8px}.source{background:#fffdf7;border:1px solid var(--line);border-radius:10px;padding:10px;min-height:110px}.source b{display:block}.source .btn{margin-top:7px;padding:7px 9px;font-size:12px}.record{display:grid;grid-template-columns:1.15fr .75fr 1fr;gap:6px;padding:9px 2px;border-bottom:1px solid var(--line);font-size:13px}.record:last-child{border:0}.record span:last-child{text-align:right;color:#a24e2d;font-weight:bold}.rules{padding-left:18px;margin:8px 0;color:#5e5851;line-height:1.75}.notice{font-size:12px;color:#6f6861;line-height:1.7}.toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:#262534;color:#fff;padding:11px 15px;border-radius:10px;box-shadow:0 5px 18px #0005;display:none;z-index:3;max-width:88%;text-align:center}.tabs{display:flex;gap:8px;margin:0 0 12px}.tabs button{border:1px solid #d6c4a9;border-radius:20px;padding:7px 11px;background:#fff7e7;color:#705033;font:13px inherit;cursor:pointer}.tabs button.active{background:#bd5732;color:#fff;border-color:#bd5732}.panel{display:none}.panel.active{display:block}@media(max-width:410px){.app{padding:14px}.milestone{font-size:10px}.milestone b{font-size:12px}.places{gap:5px}.place{font-size:12px}.source{font-size:13px}}
+</style>
+</head>
+<body>
+<main class="app">
+  <div class="top"><b>阴阳师 · 限时活动</b><span class="tag">剩余 6 天 18:42</span></div>
+  <section class="hero">
+    <div class="tag">百鬼夜行后，拾回散落的祭典物资</div>
+    <h1>百鬼拾遗祭</h1>
+    <p>完成轻量探索，收集祭典宝印，领取稳定的养成补给与意外收获。</p>
+    <div class="profile"><div><b>晴明大人</b><small>UID：2748****</small></div><div style="text-align:right"><small>拾遗券</small><b class="ticket" id="ticket">3</b></div></div>
+  </section>
+  <div class="tabs"><button class="active" data-tab="play">拾遗</button><button data-tab="rules">规则与奖励</button></div>
+  <section id="play" class="panel active">
+    <section class="card">
+      <div class="row"><div><h2>前往拾遗</h2><div class="muted">消耗 1 张拾遗券 · 获得宝印与一份即时补给</div></div><button class="btn" onclick="explore()">开始拾遗</button></div>
+      <div class="places" id="places">
+        <div class="place active" data-place="灯火长街"><b>灯火长街</b><span>寻常物资</span></div>
+        <div class="place" data-place="寮舍后院"><b>寮舍后院</b><span>达摩踪迹</span></div>
+        <div class="place" data-place="河畔石桥"><b>河畔石桥</b><span>勾玉余晖</span></div>
+      </div>
+      <div class="result" id="result">请选择地点后开始拾遗。即时补给为额外收益，宝印里程碑奖励可稳定获得。</div>
+    </section>
+    <section class="card">
+      <div class="row"><div><h2>祭典仓库</h2><span class="label">宝印达到节点后可领取</span></div><b id="sealText">0 / 260 枚祭典宝印</b></div>
+      <div class="progress"><i id="bar"></i></div>
+      <div class="milestones" id="milestones"></div>
+      <p class="notice">探索满 10 次后，每次额外获得 1 枚宝印，最多加成至第 20 次。全部奖励可通过免费参与获得。</p>
+    </section>
+    <section class="card">
+      <div class="row"><div><h2>拾遗券获取</h2><span class="label">持有上限 8 张</span></div></div>
+      <div class="sources">
+        <div class="source"><b>每日首次登录</b><span class="label">今日可领 ×2</span><br><button class="btn alt" id="loginBtn" onclick="claimLogin()">领取 ×2</button></div>
+        <div class="source"><b>完成每日任务</b><span class="label">完成任意 3 项日常</span><br><button class="btn alt" id="dailyBtn" onclick="claimDaily()">领取 ×1</button></div>
+        <div class="source"><b>分享活动</b><span class="label">活动期间限一次</span><br><button class="btn soft" id="shareBtn" onclick="claimShare()">分享并领取 ×1</button></div>
+        <div class="source"><b>收取寮友赠券</b><span class="label" id="giftLabel">今日 0 / 3</span><br><button class="btn soft" id="giftBtn" onclick="claimGift()">收取 ×1</button></div>
+      </div>
+      <p class="notice">每日任务券不可赠送；同一好友每日最多赠送 1 张。原型中的补给包与所有支付流程均不发生真实支付。</p>
+    </section>
+    <section class="card">
+      <div class="row"><div><h2>百鬼拾遗录</h2><span class="label">近期获得记录 · 无排名</span></div></div>
+      <div id="records"></div>
+    </section>
+  </section>
+  <section id="rules" class="panel">
+    <section class="card"><h2>活动说明</h2><ul class="rules"><li>活动持续 7 日，结束后额外保留 2 日领取已达成的里程碑奖励。</li><li>每次消耗 1 张拾遗券，稳定获得 10–14 枚祭典宝印与一项即时补给。</li><li>拾遗券每日首次登录可领 2 张，完成日常可领 1 张；分享限领一次，每日最多收取 3 张寮友赠券。</li><li>不设积分、排行榜、排名奖励或玩家对抗。活动结束后未使用的拾遗券与宝印清空。</li></ul></section>
+    <section class="card"><h2>即时补给概率</h2><div class="record"><b>金币 ×20,000</b><span>35%</span><span>日常资源</span></div><div class="record"><b>奉为达摩 ×1</b><span>25%</span><span>养成补给</span></div><div class="record"><b>勾玉 ×20</b><span>20%</span><span>稀缺资源</span></div><div class="record"><b>大蛇的逆鳞 ×15</b><span>12%</span><span>御魂资源</span></div><div class="record"><b>神秘符咒 ×1</b><span>5%</span><span>额外惊喜</span></div><div class="record"><b>御行达摩碎片 ×2</b><span>3%</span><span>长期积累</span></div></section>
+    <section class="card"><h2>里程碑保底奖励</h2><div class="record"><b>30 宝印</b><span>勾玉 ×30</span><span>首日反馈</span></div><div class="record"><b>70 宝印</b><span>奉为达摩 ×2</span><span>培养资源</span></div><div class="record"><b>120 宝印</b><span>神秘符咒 ×1</span><span>中期目标</span></div><div class="record"><b>180 宝印</b><span>御行达摩碎片 ×8</span><span>稀缺积累</span></div><div class="record"><b>260 宝印</b><span>神秘符咒 ×1、勾玉 ×50</span><span>完整参与</span></div></section>
+  </section>
+</main>
+<div id="toast" class="toast"></div>
+<script>
+let tickets=3,seals=0,attempts=0,gifts=0,selected='灯火长街';
+let loginClaimed=false,dailyClaimed=false,shareClaimed=false;
+const milestones=[{n:30,r:'勾玉 ×30'},{n:70,r:'奉为达摩 ×2'},{n:120,r:'神秘符咒 ×1'},{n:180,r:'御行达摩碎片 ×8'},{n:260,r:'神秘符咒 ×1、勾玉 ×50'}];
+const claimed=new Set();
+let records=[['花鸟卷','UID：8342****','勾玉 ×20'],['青行灯','UID：2619****','神秘符咒 ×1'],['夜叉','UID：7610****','金币 ×20,000'],['缘结神','UID：1028****','奉为达摩 ×1']];
+const pool=[['金币 ×20,000',35],['奉为达摩 ×1',25],['勾玉 ×20',20],['大蛇的逆鳞 ×15',12],['神秘符咒 ×1',5],['御行达摩碎片 ×2',3]];
+function toast(message){const el=document.getElementById('toast');el.textContent=message;el.style.display='block';clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>el.style.display='none',2200)}
+function update(){document.getElementById('ticket').textContent=tickets;document.getElementById('sealText').textContent=seals+' / 260 枚祭典宝印';document.getElementById('bar').style.width=Math.min(100,seals/260*100)+'%';document.getElementById('giftLabel').textContent='今日 '+gifts+' / 3';renderMilestones();renderRecords()}
+function renderMilestones(){document.getElementById('milestones').innerHTML=milestones.map((m,i)=>{const ready=seals>=m.n&&!claimed.has(i),taken=claimed.has(i);return '<div class="milestone '+(taken?'claimed':ready?'done':'')+'"><b>'+m.n+'</b><span>'+m.r+'</span>'+ (ready?'<button onclick="claimMilestone('+i+')">领取</button>':taken?'<small>已领取</small>':'<small>未达成</small>')+'</div>'}).join('')}
+function renderRecords(){document.getElementById('records').innerHTML=records.slice(0,6).map(r=>'<div class="record"><b>'+r[0]+'</b><span>'+r[1]+'</span><span>'+r[2]+'</span></div>').join('')}
+function addTicket(n,reason){if(tickets>=8){toast('拾遗券已达持有上限 8 张，请先进行探索。');return false}const actual=Math.min(n,8-tickets);tickets+=actual;toast(reason+'：拾遗券 ×'+actual);update();return actual===n}
+document.getElementById('places').addEventListener('click',e=>{const card=e.target.closest('.place');if(!card)return;selected=card.dataset.place;document.querySelectorAll('.place').forEach(x=>x.classList.toggle('active',x===card));document.getElementById('result').textContent='已选择「'+selected+'」，开始拾遗后将获得宝印与一份即时补给。'})
+function draw(){let roll=Math.random()*100,sum=0;for(const item of pool){sum+=item[1];if(roll<sum)return item[0]}}
+function explore(){if(!tickets){toast('拾遗券不足，可完成日常或收取寮友赠券。');return}tickets--;attempts++;const bonus=attempts>10&&attempts<=20?1:0;const gained=10+Math.floor(Math.random()*5)+bonus;const reward=draw();seals+=gained;records.unshift(['晴明大人','UID：2748****',reward]);document.getElementById('result').innerHTML='在「'+selected+'」拾得祭典物资：<b>祭典宝印 ×'+gained+'</b>'+ (bonus?'（探索加成 +1）':'')+'；额外获得 <b>'+reward+'</b>。';update()}
+function claimMilestone(i){if(seals<milestones[i].n||claimed.has(i))return;claimed.add(i);toast('已领取里程碑奖励：'+milestones[i].r);update()}
+function claimLogin(){if(loginClaimed)return; if(addTicket(2,'每日登录奖励')){loginClaimed=true;document.getElementById('loginBtn').disabled=true}}
+function claimDaily(){if(dailyClaimed)return;if(addTicket(1,'每日任务奖励')){dailyClaimed=true;document.getElementById('dailyBtn').disabled=true}}
+function claimShare(){if(shareClaimed)return;if(addTicket(1,'分享奖励')){shareClaimed=true;document.getElementById('shareBtn').disabled=true}}
+function claimGift(){if(gifts>=3){toast('今日已收取 3 张寮友赠券。');return}if(addTicket(1,'收取寮友赠券')){gifts++;if(gifts===3)document.getElementById('giftBtn').disabled=true}}
+document.querySelectorAll('.tabs button').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.tabs button').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));btn.classList.add('active');document.getElementById(btn.dataset.tab).classList.add('active')}));
+update();
+</script>
+</body></html>
